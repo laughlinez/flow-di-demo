@@ -18,14 +18,25 @@ func main () {
 	flow.Registry["XXX"] = func() flow.Circuitry { return x }
 	flow.Registry["YYY"] = func() flow.Circuitry { return y }
 
-	c := flow.NewCircuit()
 
-	c.Add("xx", "XXX")
-	c.Add("yy", "YYY")
-	c.Add("db", "LevelDB")
+	go func() {
+		c := flow.NewCircuit()
 
-	c.Add("forever", "Forever")
-	c.Run()
+		c.Add("xx", "XXX")
+		//c.Add("db", "LevelDB")
+
+		c.Add("forever", "Forever")
+		c.Run()
+	}()
+
+
+	c1 := flow.NewCircuit()
+
+	c1.Add("yy", "YYY")
+
+	c1.Add("forever", "Forever")
+	c1.Run()
+
 
 
 

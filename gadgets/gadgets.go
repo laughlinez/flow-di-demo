@@ -36,7 +36,7 @@ func (g *Foo) Run() {
 
 	c := time.Tick(2 * time.Second)
 	for now := range c {
-		fmt.Printf("%v \n", now)
+		fmt.Printf("Foo Tick: %v \n", now)
 
 		if g.Settings != nil { //did the provider get set?
 			if s,err := g.Settings.Keys("set1/") ; err == nil {
@@ -78,7 +78,7 @@ func (g *Bar) Run() {
 
 	c := time.Tick(5 * time.Second)
 	for now := range c {
-		fmt.Printf("%v \n", now)
+		fmt.Printf("Bar Tick: %v \n", now)
 		if g.Settings != nil {
 			if s,err := g.Settings.Keys("") ; err == nil {
 				fmt.Printf("Bar Setting Keys: %s \n", s)
